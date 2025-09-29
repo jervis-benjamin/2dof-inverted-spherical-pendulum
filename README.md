@@ -1,1 +1,1 @@
-# 2dof-inverted-spherical-pendulum
+# 2dof Inverted Spherical Pendulum
