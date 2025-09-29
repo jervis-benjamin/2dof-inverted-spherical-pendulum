@@ -3,16 +3,16 @@
 <img src="Simulink/data_and_videos/Simulink_3d_model_2dof_pendu.png" alt="model of the pendulum in Simulink" width="200">
 
 
-## Overview
+## Overview 🚀🌌
 This project aims to keep an inverted pendulum (free to rotate about 2 axis) upright and balanced using orthogonally placed motors and propellors. Features include dedicated PID controllers, an extended Kalman filter for IMU sensor fusion, modeling system dynamics through Simulink, and hardware implementation through ESP32/Arduino components and CAD + 3D printing.
 
 The goal of this project was to learn fundamentals of controls and design. Many of the components in this project are far from perfect, but they represent the time I’ve spent exploring a topic I care about.
 
 
 ### Here is the project broken up into its major sections, explained in further detail below:
-- *CAD/Structure Design*
-- *Simulation and Modeling*
-- *Electronics, Controller Software, and Implementation*
+- *CAD/Structure Design* 🧮📐
+- *Simulation and Modeling* 🎯📊
+- *Electronics, Controller Software, and Implementation* 🛠️🔌
 
 ### If you are interested in replicating or improving this project, here are the tools used:
 *(These are just what I used, there are always better and more accessible options)*
@@ -34,7 +34,7 @@ The goal of this project was to learn fundamentals of controls and design. Many 
 
 
 
-## CAD/Structure Design
+## CAD/Structure Design 🧮📐
 As mentioned before, all structural parts were custom made, 3D modeled and printed from PLA. This was to support the iterative process of building and testing prototypes, as well as enabling me to grow more on my knowledge of CAD and 3D printing. 
 
 **The general structure can be mainly broken down into two sections:**
@@ -45,9 +45,13 @@ As mentioned before, all structural parts were custom made, 3D modeled and print
  
 Within the CAD directory are both the .stl files and well as the Solidworks part + assembly files that were used to create this project.
 
-## Simulation and Modeling
+## Simulation and Modeling 🎯📊
+<img src="media/2dof_eqns_of_motion.png" alt="Euler-Langrage Equations of motion (overview of derivation linked in this pdf):" width="600"> *Euler-Langrage Equations of motion for the pendulum*
+
 
 To model the pendulum’s dynamics and simulate the control logic used, I learned how to use Simulink. There are many things to refine as this is the first model I have made in Simulink, but below is the general functionalities and structure of the program:
+
+<img src="media/2dof_simulink.png" width="400">
 
 - Implements PID control loops for each axis of control.
 - Models dynamics via Euler-Lagrange equations of state as MATLAB functions.
@@ -56,11 +60,14 @@ To model the pendulum’s dynamics and simulate the control logic used, I learne
 - Has the option to control the setpoint in real time to control the pendulum on user inputs.
 
 **Simulation outputs**
-- 3D visualization of pendulum performance 
+- 3D visualization of pendulum performance (found in: Simulink/data_and_videos)
 - Plots of relevant data such as angles, setpoints, forces, and motor commands over time
+<img src="Simulink/data_and_videos/upright_data.png" width="400"> <img src="Simulink/data_and_videos/upright_force_motor_data.png" width="400"> <img src="Simulink/data_and_videos/setpoint_control_data.png" width="400"> 
 
 
-## Electronics, Controller Software, and Implementation
+## Electronics, Controller Software, and Implementation 🛠️🔌
+<img src="media/pendulum.jpg" width="400"><img src="media/electronics_bay.jpg" width="400">
+
 To interface with the hardware, I utilized a C++ controller program which ran on an ESP32 that linked communication between the IMU and motors. The step is the culmination of the CAD and design work to create a physical model.
 
 **Features:**
@@ -71,7 +78,7 @@ To interface with the hardware, I utilized a C++ controller program which ran on
 Through testing and tunning, the pendulum was able to balance, though only within a small range. After referencing the simulation model, controller code, and the hardware performance, the biggest limitation to stability was the time taken for the propellors to spin fast enough to produce the required thrust. While the pendulum’s performance was not robust as originally planned, further steps can be taken for the future of this project (which are explained in the section below)
 
 
-## Future Steps
+## Future Steps🛰️🔭
 Overall, the large delay in the time that the propellors spin fast enough to provide the required torque prevents the level of stability that I am aiming for. Without much support, the pendulum fails to keep upright within a range larger than 5 degrees. In the future, I am planning to either account for this by implementing faster hardware or allowing the controller to better anticipate these delays. 
 
 Additionally, I am hoping to increase the complexity of this project to allow me to dive deeper and apply more relevant concepts within controls. For example, I am considering adding another degree of freedom (rotation about the z axis), as well as integrating more complex controller logic such as LQR. Moreover, to better reflect the applicability of this project, I think it may be interesting to switch propulsion to cold gas thrusters to reflect a spacecrafts ability to use an RCS for attitude control.
