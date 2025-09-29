@@ -46,7 +46,9 @@ As mentioned before, all structural parts were custom made, 3D modeled and print
 Within the CAD directory are both the .stl files and well as the Solidworks part + assembly files that were used to create this project.
 
 ## Simulation and Modeling 🎯📊
-<img src="media/2dof_eqns_of_motion.png" alt="Euler-Langrage Equations of motion (overview of derivation linked in this pdf):" width="600"> *Euler-Langrage Equations of motion for the pendulum*
+<img src="media/2dof_eqns_of_motion.png" alt="Euler-Langrage Equations of motion (overview of derivation linked in this pdf):" width="600">
+
+*Euler-Langrage Equations of motion for the pendulum*
 
 
 To model the pendulum’s dynamics and simulate the control logic used, I learned how to use Simulink. There are many things to refine as this is the first model I have made in Simulink, but below is the general functionalities and structure of the program:
